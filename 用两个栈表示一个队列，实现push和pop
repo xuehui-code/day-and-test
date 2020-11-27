@@ -1,0 +1,28 @@
+public class Solution {
+    //新创建栈(先进后出类)
+    Stack<Integer> stack1 = new Stack<Integer>();
+    Stack<Integer> stack2 = new Stack<Integer>();
+    
+    public void push(int node) {
+        //有数据存进来,放入栈1,然后再取出放进栈2,最后出栈
+        stack1.push(node);
+    }
+    
+    public int pop() {
+        Integer num = null ;
+        //判断stack2是否为空
+        if(!stack2.empty()){
+            num = stack2.pop();
+            return num ;
+        }else{
+            while(!stack1.empty()){
+                num = stack1.pop();
+                stack2.push(num);
+            }
+            if(!stack2.empty()){
+                num = stack2.pop();
+            }
+        }
+        return num ;
+    }
+}
