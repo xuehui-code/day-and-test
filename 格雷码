@@ -1,0 +1,28 @@
+import java.util.*;
+
+public class GrayCode {
+    public static String[] getGray(int n) {
+        String[] graycode = new String[(int)Math.pow(2,n)];
+        if(n == 1){
+            graycode[0] = "0";
+            graycode[1] = "1";
+            return graycode;
+        }
+        String[] gray = getGray(n-1);
+        for(int i = 0;i<gray.length;i++){
+            graycode[i] = "0" +gray[i];
+            graycode[graycode.length-1-i] = "1" + gray[i];
+        }
+        return graycode;
+    }
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int x = sc.nextInt();
+        sc.close();
+        String[] codes = new String[(int)Math.pow(2,x)];  //定义长度
+        codes = getGray(x);   //引用函数
+        for(String string:codes){
+            System.out.println(string);
+        }
+    }
+}
