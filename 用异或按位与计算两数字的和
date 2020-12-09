@@ -1,0 +1,22 @@
+import java.util.*;
+
+public class UnusualAdd {
+    public int addAB(int A, int B) {
+        // write code here
+        if(A == 0)
+            return B;
+        if(B == 0)
+            return A;
+        int yu = A&B;
+        yu = yu<<1;
+        int yh = A^B;
+        A = yu;
+        B = yh;
+        return addAB(yu,yh);
+    }
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int A = sc.nextInt();
+        int B = sc.nextInt();
+    }
+}
