@@ -1,0 +1,30 @@
+public ListNode partition(ListNode pHead, int x) {
+        if (pHead == null) {   //如果链表为空直接返回null即可
+        return null;
+        }
+        if (pHead.next == null) {  //如果链表只有一个节点直接返回头节点即可
+        return pHead;
+        }
+        ListNode bigHead = new ListNode(-1);   //创建两个新的带傀儡节点的新链表，
+        // 一个存放大于X的元素的链表
+        ListNode bigTail = bigHead;
+        // 一个存放小于X的元素的链表
+        ListNode smallHead = new ListNode(-1);
+        ListNode smallTail = smallHead;
+
+        for (ListNode cur = pHead; cur != null; cur = cur.next) {  //循环遍历给定连链表
+        if (cur.val < x) {
+        // 插入到 smallTail 后面, 创建崭新的节点(新节点的 next 一定是 null)
+        smallTail.next = new ListNode(cur.val);
+        smallTail = smallTail.next;
+        } else {
+        // 插入到 bigTail 的后面
+        bigTail.next = new ListNode(cur.val);
+        bigTail = bigTail.next;
+        }
+        }
+
+        // 将两个链表收尾相接到一起
+        smallTail.next = bigHead.next;
+        return smallHead.next;
+        }
