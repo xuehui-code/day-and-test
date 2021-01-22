@@ -1,0 +1,40 @@
+public class Balance {
+    public int checkHeight(TreeNode root){//平衡返回子树的实际高度  如果不平衡 会返回-1 并跳出
+        if(root == null)
+            return  0;
+        //判断左子树是否平衡
+        int leftHeight = checkHeight(root.left);
+        if(leftHeight == -1)
+            return  -1;
+
+        //判断右子树是否平衡
+        int rightHeight = checkHeight(root.right);
+        if(rightHeight == -1)
+            return  -1;
+
+        //判断本节点是否平衡
+        int getHeight = leftHeight - rightHeight;
+        if(Math.abs(getHeight) > 1) {
+            return -1;
+        }
+        else {
+            //返回实际高度
+            return Math.max(leftHeight,rightHeight)+1;
+        }
+
+    }
+    public boolean isBalance(TreeNode root) {
+        // write code here
+        if(root == null){
+            return true;
+        }else {
+           int height = checkHeight(root);
+            if(height == -1){
+                return false;
+            }
+            else
+                return  true;
+        }
+
+    }
+}
