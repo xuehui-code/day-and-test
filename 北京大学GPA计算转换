@@ -1,0 +1,53 @@
+package test_124;
+ 
+import java.util.Scanner;
+ 
+public class Solution2 {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int a=sc.nextInt();
+		int[] array=new int[a];
+		double[] score=new double[a];
+		double sumArray=0;
+		for(int i=0;i<a;i++) {
+			int b=sc.nextInt();
+			array[i]=b;
+			sumArray+=b;
+		}
+		for(int i=0;i<a;i++) {
+			int b=sc.nextInt();
+			score[i]=b;
+		}
+		change(score);
+		double sum=0;
+		for(int i=0;i<a;i++) {
+			sum+=array[i]*score[i];
+		}
+		double GPA=sum/(sumArray*1.0);
+		System.out.printf("%.2f",GPA);
+		System.out.println();
+	}
+ 
+	private static void change(double[] score) {
+		// TODO 自动生成的方法存根
+		for(int i=0;i<score.length;i++) {
+			double a=score[i];
+			score[i]=calculation(a);
+		}
+	}
+ 
+	private static double calculation(double a) {
+		// TODO 自动生成的方法存根
+		if(a>=90&&a<100)return 4.0;
+		if(a>=85&&a<89) return 3.7;
+		if(a>=82&&a<85) return 3.3;
+		if(a>=78&&a<82) return 3.0;
+		if(a>=75&&a<78) return 2.7;
+		if(a>=72&&a<75) return 2.3;
+		if(a>=68&&a<72) return 2.0;
+		if(a>=64&&a<68) return 1.5;
+		if(a>=60&&a<64) return 1.0;
+		return 0;
+	}
+	
+}
