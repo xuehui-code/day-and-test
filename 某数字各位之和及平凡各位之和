@@ -1,0 +1,25 @@
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        while(sc.hasNext()){
+            int n = sc.nextInt();
+            if(n<=0||n>=40000){
+                return;
+            }
+            int x = n*n;
+            int res1 = 0;
+            int res2 = 0;
+            while(n>0){
+                res1+=n%10;
+                n = n/10;
+            }
+            while(x>0){
+                res2+=x%10;
+                x = x/10;
+            }
+            System.out.println(res1+" "+res2);
+        }
+    }
+}
