@@ -1,0 +1,34 @@
+
+
+import java.util.Scanner;
+
+public class ShouXingShu {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        while(sc.hasNext()) {
+            int n = sc.nextInt();
+            if (n < 2 || n >= 100){
+                break;
+            }
+            int square = n*n;
+            if (n < 10){
+                if ((square - n)%10 == 0){
+                    System.out.println("Yes!");
+                }else {
+                    System.out.println("No!");
+                }
+            }else {
+                if ((square - n)%100 == 0){
+                    System.out.println("Yes!");
+                }else {
+                    System.out.println("No!");
+                }
+            }
+        }
+    }
+}
+
+
+思路描述：
+如果n是一个一位数 那么当(n^2- n)%10 == 0时 他就是一个守形数
+如果n不是一个一位数 那么当(n^2- n)%100 == 0时 他就是一个守形数
