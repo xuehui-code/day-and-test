@@ -1,0 +1,38 @@
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        
+        for(int i=0;i<n;i++){
+            arr[i] = sc.nextInt();
+        }
+        Arrays.sort(arr);   //排序
+        int[] count = new int[n+1];
+        for(int i=0;i<n;i++){
+            count[i] = arr[i];
+        }
+        count[n] = arr[n-1];  //count最后俩位都复制arr最后一位
+        int m = count.length;
+        int[] res = new int[2];  //设置输出结果
+        int j=0;
+        for(int i=0;i<m-1;i++){
+            int c = 1;   //c记录某数字出现次数
+            while(i<m-1&&count[i]==count[i+1]){  //循环条件(相邻两数字数值相同)
+                c++;
+                i++;
+            }
+            if((c%2==0)&&i==m-1){   //若为偶数次并且已经遍历完
+                res[j] = count[i];
+                j++;
+            }
+            if((c%2!=0)&&i!=m-1){   //若为奇数次并没有遍历完
+                res[j] = count[i];   //则记录奇数次的数值（由于已经排序所以第一次记录下标0第二次记录下标1）
+                j++;
+            }
+        }
+        System.out.println(res[0]+" "+res[1]);
+    }
+}
