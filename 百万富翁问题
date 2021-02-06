@@ -1,0 +1,11 @@
+public class Main {
+    public static void main(String[] args) {
+        int m=0;
+        int n=0;
+        for(int i=0;i<30;i++){
+            n+=10;
+            m+=(int)(Math.pow(2,i));//Math是double类型，需要强转为int类型
+        }
+        System.out.println(n+" "+m);
+    }
+}
