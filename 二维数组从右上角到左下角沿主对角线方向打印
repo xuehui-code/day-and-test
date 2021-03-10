@@ -1,0 +1,28 @@
+import java.util.*;
+
+public class Printer {
+    public int[] arrayPrint(int[][] arr, int n) {
+        // write code here
+        int[] res = new int[n*n];
+        int i = 0;
+        int j = n-1;
+        int p = 0;
+        while(i<n){   //主对角线及以上内容
+            for(int k=0;k<=i;k++){
+                res[p] = arr[k][j-i+k];
+                p++;
+            }
+            i++;
+        }
+        i=1;
+        j=0;
+        while(i<n){   //主对角线以下内容
+            for(int k=i;k<n;k++){
+                res[p] = arr[k][j+k-i];
+                p++;
+            }
+            i++;
+        }
+        return res;
+    }
+}
