@@ -1,0 +1,19 @@
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        while(sc.hasNextLine()){
+            String s = sc.nextLine();
+            print(s);
+        }
+    }
+    public static void print(String string){
+        String[] s = string.split("_");    //字符串数组s 是string用_分割后的数组
+        String str = s[0];
+        for(int i=1;i<s.length;i++){   //从数组第二个元素开始加在str上
+            str+=s[i].toUpperCase().substring(0,1)+s[i].substring(1);    //元素第一位大写后续不变
+        }
+        System.out.println(str);  //输出str
+    }
+}
