@@ -1,0 +1,20 @@
+public class Solution {
+    public int MoreThanHalfNum_Solution(int [] array) {
+        int len = array.length;
+        int n = (len+2)/2;   //count要大于等于n
+        int res = 0;
+        int count = 0;
+        for(int i=0;i<len;i++){
+            for(int j=0;j<len;j++){
+                if(array[i]==array[j]){
+                    count++;
+                }
+                if(count>=n){
+                    res = array[i];
+                }
+            }
+            count = 0;
+        }
+        return res;
+    }
+}
